@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <script src="components/loader.js"></script>
+    <script src="lib/onsenui/js/onsenui.min.js"></script>
+
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+    <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+        margin: 30;
+      }
+    </style>
+    <script>        
+        ons.ready(function() {
+            console.log("Onsen UI is ready!");
+        });
+    </script>
+    <script>
+        
+        function initMap($scope) {
+          var myLatLng = {lat: -25.363, lng: 131.044};
+        
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 4,
+            center: myLatLng
+          });
+        
+          var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Hello World!'
+          });
+        }
+    </script>
+</head>
+<body>
+    <ons-tabbar>
+      <ons-tab label="Tab 1" page="tab1.html" active>
+      </ons-tab>
+      <ons-tab label="Tab 2" page="tab2.html">
+      </ons-tab>
+    </ons-tabbar>
+
+    <ons-template id="tab1.html">
+      <ons-page>
+        <ons-toolbar>
+          <div class="center">Tab 1</div>
+        </ons-toolbar>
+
+        <p style="text-align: center;">
+          This is the first page.
+        </p>
+    
+        <input type="search" class="search-input" placeholder="検索1">
+        <div id="map"></div>
+
+      </ons-page>
+    </ons-template>
+
+    <ons-template id="tab2.html">
+      <ons-page>
+        <ons-toolbar>
+          <div class="center">Tab 2</div>
+        </ons-toolbar>
+
+        <p style="text-align: center;">
+          This is the second page.
+        </p>
+      </ons-page>
+    </ons-template>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAwQxrae_6NdULOhId4O83Y5tN1JwNTLM&signed_in=true&callback=initMap"></script>
+</body>
+</html>
